@@ -23,13 +23,13 @@
     <!-- Default SSL configuration enables trust for default certificates from the Java runtime -->
     <ssl id="defaultSSLConfig" trustDefaultCerts="true"/>
 
-    <!--    <dataSource id="DefaultDataSource" jndiName="jdbc/mySQL">-->
-    <!--        <jdbcDriver libraryRef="MySQLLib"/>-->
-    <!--        <properties databaseName="cursistdb?serverTimezone=UTC" serverName="localhost" portNumber="3306"-->
-    <!--                    user="cursist" password="pa11554w0rd"/>-->
-    <!--    </dataSource>-->
+    <dataSource id="DefaultDataSource" jndiName="jdbc/mySQL">
+        <jdbcDriver libraryRef="MySQLLib"/>
+        <properties databaseName="cursistdb?serverTimezone=UTC" serverName="localhost" portNumber="3306"
+                    user="cursist" password="pa11554w0rd"/>
+    </dataSource>
 
-    <!--    <library id="MySQLLib">-->
-    <!--        <file name="/Users/jorisn/.m2/repository/mysql/mysql-connector-java/8.0.22/mysql-connector-java-8.0.22.jar"/>-->
-    <!--    </library>-->
+    <library id="MySQLLib">
+        <file name="/Users/jorisn/.m2/repository/mysql/mysql-connector-java/8.0.22/mysql-connector-java-8.0.22.jar"/>
+    </library>
 </server>

@@ -1,6 +1,11 @@
 package org.example.joris.app.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Framework {
+    @Id
     private int id;
     private String name;
     private String logo;
@@ -11,6 +16,10 @@ public class Framework {
         setName(name);
         setLogo(logo);
         setScore(score);
+    }
+
+    public Framework() {
+
     }
 
     public int getId() {

@@ -137,8 +137,15 @@ class StartPaginaComponent {
             logo: this.reactiveForm.value.logo,
             score: this.reactiveForm.value.score
         };
-        this.frameworks.push(newFramework);
-        this.reactiveForm.reset();
+        const observableOfPost = this.frameworkDaoService.save(newFramework);
+        observableOfPost.subscribe(response => {
+            console.log('Post of newFramework done response = ' + response);
+            const observableOfGet = this.frameworkDaoService.getFrameworks();
+            observableOfGet.subscribe(fr => {
+                this.frameworks = fr;
+                this.reactiveForm.reset();
+            });
+        });
     }
 }
 StartPaginaComponent.ɵfac = function StartPaginaComponent_Factory(t) { return new (t || StartPaginaComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_framework_dao_service__WEBPACK_IMPORTED_MODULE_3__["FrameworkDaoService"])); };
@@ -331,18 +338,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 class FrameworkDaoService {
     constructor(httpClient) {
         this.httpClient = httpClient;
+        this.url = 'http://localhost:9080/play03withjaxrs-1.0-SNAPSHOT/resources/frameworks';
     }
     getFrameworks() {
-        const url = 'http://localhost:9080/play03withjaxrs-1.0-SNAPSHOT/resources/frameworks';
         let observable;
-        observable = this.httpClient.get(url);
+        observable = this.httpClient.get(this.url);
         return observable;
-        // observable.subscribe((fr) => {
-        //   this.frameworks = fr;
-        // });
+    }
+    save(framework) {
+        const contentTypeHeader = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ contentType: 'application/json' });
+        const observableResponse = this.httpClient.post(this.url, framework, { headers: contentTypeHeader });
+        return observableResponse;
     }
 }
 FrameworkDaoService.ɵfac = function FrameworkDaoService_Factory(t) { return new (t || FrameworkDaoService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
