@@ -1,5 +1,6 @@
 package org.example.joris.app.domain;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import javax.persistence.EntityManager;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 class SetupOfDatabaseTests {
 
     @Test
-        //@Disabled("Alleen bedoeld om de tabellen aan te maken. Maakt gebruik van de persistence unit zoals gedefinieerd in de persistence.xml onder test/resource/META-INF")
+    @Disabled("Alleen bedoeld om de tabellen aan te maken. Maakt gebruik van de persistence unit zoals gedefinieerd in de persistence.xml onder test/resource/META-INF")
     void createTableFrameworkAndInsertSomeFrameworks() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("puJavaTraject");
         EntityManager em = emf.createEntityManager();
