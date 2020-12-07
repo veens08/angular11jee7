@@ -10,6 +10,7 @@
         <feature>json-1.0</feature>
         <feature>jndi-1.0</feature>
         <feature>ejbLite-3.2</feature>
+        <feature>localConnector-1.0</feature>
     </featureManager>
 
     <!-- To access this server from a remote client add a host attribute to the following element, e.g. host="*" -->
@@ -32,4 +33,6 @@
     <library id="MySQLLib">
         <file name="/Users/jorisn/.m2/repository/mysql/mysql-connector-java/8.0.22/mysql-connector-java-8.0.22.jar"/>
     </library>
+
+    <logging traceSpecification="*=audit:org.eclipse.persistence.=all"/>
 </server>

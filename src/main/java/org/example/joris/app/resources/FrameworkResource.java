@@ -1,18 +1,13 @@
 package org.example.joris.app.resources;
 
 import org.example.joris.app.domain.Framework;
-import org.example.joris.app.services.FrameworkDaoServive;
+import org.example.joris.app.services.FrameworkDaoService;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
-
-
 
 
 @Path("/frameworks")
@@ -20,11 +15,17 @@ import java.util.List;
 public class FrameworkResource {
 
     @Inject
-    private FrameworkDaoServive fds;
+    private FrameworkDaoService fds;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Framework> getFrameworks() {
         return fds.getFrameworks();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void addFramework(Framework framework) {
+        fds.save(framework);
     }
 }

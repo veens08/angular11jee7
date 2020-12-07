@@ -1,7 +1,8 @@
 package org.example.joris.app.domain;
 
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Ignore;
+import org.junit.Test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -9,12 +10,12 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.util.ArrayList;
 
-class SetupOfDatabaseTests {
+public class SetupOfDatabaseTests {
 
     @Test
-    @Disabled("Alleen bedoeld om de tabellen aan te maken. Maakt gebruik van de persistence unit zoals gedefinieerd in de persistence.xml onder test/resource/META-INF")
-    void createTableFrameworkAndInsertSomeFrameworks() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("puJavaTraject");
+    @Ignore("Alleen bedoeld om de tabellen aan te maken. Maakt gebruik van de persistence unit zoals gedefinieerd in de persistence.xml onder test/resource/META-INF")
+    public void createTableFrameworkAndInsertSomeFrameworks() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("test-corona-app-pu");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         ArrayList<Framework> frameworks = new ArrayList<>();
